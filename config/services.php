@@ -31,4 +31,16 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    // config/services.php
+    'stripe' => [
+        'model' => App\Models\User::class,
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET'),
+        'webhook' => [
+            // 'secret' => env('STRIPE_WEBHOOK_SECRET'), // Supprimer ou commenter cette ligne
+            'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
+            // Note : La tolérance n'est plus pertinente sans vérification de signature
+        ],
+    ],
+
 ];
